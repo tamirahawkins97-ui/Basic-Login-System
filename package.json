@@ -1,0 +1,29 @@
+{
+  "name": "basic-login-system",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/tamirahawkins97-ui/Basic-Login-System#readme",
+  "bugs": {
+    "url": "https://github.com/tamirahawkins97-ui/Basic-Login-System/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamirahawkins97-ui/Basic-Login-System.git"
+  },
+  "license": "ISC",
+  "author": "Tamira Hawkins",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.2",
+    "nodemon": "^3.1.14",
+    "react-router-dom": "^7.18.4"
+  }
+}
