@@ -1,23 +1,38 @@
-//DEPENDANCIES 
-import { Schema, model } from "mongoose"
-import bycrpt from 'bycrpt'
+// DEPENDENCIES 
+import { Schema, model } from "mongoose";
+import bcrypt from "bcrypt";
 
-//Automatically hashes our password before reaching the database. 
+const saltRounds = 10;
+
+// Schema Definition
 const userSchema = new Schema({
-Username: {type: String, required: true},
-Email: {type: String, required: true},
-Password: {type: String, required: true, minlength: 8}
+  username: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true, minlength: 8 }
 });
 
-//Create pre-save middle ware for password creation! :D
-userSchema.pre("save", async function (next) {
+// 1. Pre-save hook: Automatically hashes password before saving
+userSchema.pre("save", async function () {
   if (this.isNew || this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
- 
-  next();
+  // No next() needed when using async/await
 });
 
-const User = model("User",userSchema)
+// 2. Schema Static: To ensure the hashing is correctly established
+userSchema.statics.findOrCreate = async function (userData) {
+  // Check if user already exists
+  let user = await this.findOne({ email: userData.email });
+
+  // If user does not exist, create and save (triggers pre-save hook)
+  if (!user) {
+    user = new this(userData);
+    await user.save();
+  }
+
+  return user;
+};
+
+const User = model("User", userSchema);
 
 export default User;

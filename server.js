@@ -3,18 +3,20 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT || 2218;
+const UserRoutes = require('./routes/UserRoutes');
+const connectDB = require('./db/connection');
 
-
-//DATABASE CONNECTION 
+//CONNECT TO THE DATABASE
+connectDB();
 
 //MIDDLEWARE 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use
+app.use('/api', userRoutes);
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
 
-    res.send("Welcome! ");
+    res.send("Welcome!");
 });
 
 //Mount Rounter Here.
