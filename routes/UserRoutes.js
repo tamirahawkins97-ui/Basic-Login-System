@@ -31,6 +31,11 @@ router.post('/users/register', async (req, res) => {
         return res.status(400).json({error: 'A user with that email or username already exists.' })
     }
 
+    //If the user does not exist
+    if(!existingUser){
+       
+    }
+
     } catch (error) {
         return res.status(500).json({ error: error.message })
     }

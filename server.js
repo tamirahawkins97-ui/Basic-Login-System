@@ -12,10 +12,9 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use
 
-app.get('/', (req, res) => {
-    const username = req.body[`username`]
+app.get('/api', (req, res) => {
 
-    res.send(`Welcome! ${username}`);
+    res.send("Welcome! ");
 });
 
 //Mount Rounter Here.
