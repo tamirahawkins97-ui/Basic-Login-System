@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Mount Router Here
-app.use('/api', UserRoutes);
+app.use('/api/users', UserRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome!');
