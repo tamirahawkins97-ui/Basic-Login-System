@@ -10,7 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret';
 //ROUTES
 
 //Create - Create a POST route (e.g., /api/users/register)
-router.post('/users/register', async (req, res) => {
+router.post('/api/users/register', async (req, res) => {
   try {
     const { username, password, email } = req.body;
 
@@ -38,7 +38,7 @@ router.post('/users/register', async (req, res) => {
 });
 
 //Build the Login Endpoint
-router.post('/users/login', async (req, res) => {
+router.post('/api/users/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
