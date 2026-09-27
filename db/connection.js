@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const connectDB = () =>{
 
- mongoose.connect(process.env.MONGO_URI || process.env.MONGO_URI2) 
+ mongoose.connect(process.env.MONGO_URI2 || process.env.MONGO_URI) 
 
  const db = mongoose.connection; 
 
